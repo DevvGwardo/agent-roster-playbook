@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.jpg" alt="The Agent Roster Playbook Banner" />
+</p>
+
 # The Agent Roster Playbook
 
 11 steps to a working roster of narrow AI agents, reverse-engineered from how teams at SpaceXAI and Cursor actually run theirs day to day.
