@@ -13,8 +13,11 @@ Not prompt tricks. Setup you do once: narrow bots with editable profile files, e
 ## System Architecture & Workflow
 
 <p align="center">
-  <img src="assets/architecture-diagram.jpg" alt="The Agent Roster Architecture Diagram" />
+  <img src="assets/system-architecture.jpg" alt="The Agent Roster Architecture Diagram" width="100%" />
 </p>
+
+<details>
+<summary>View architecture as text (Mermaid)</summary>
 
 ```mermaid
 flowchart TD
@@ -69,10 +72,12 @@ flowchart TD
     S1 --> S2 --> S3 --> S4 --> S5
 ```
 
+</details>
+
 ## The 11-Step Pipeline
 
 <p align="center">
-  <img src="assets/workflow-pipeline.jpg" alt="The 11-Step Agent Roster Pipeline" />
+  <img src="assets/pipeline-workflow.jpg" alt="The 11-Step Agent Roster Pipeline" width="100%" />
 </p>
 
 ## The 11 steps
