@@ -23,6 +23,18 @@ Don't wait to feel ready. Schedule it:
 | 3 | It acts on routine cases, escalates only exceptions |
 | 4 | It runs on a schedule, I read the weekly summary |
 
+```mermaid
+flowchart LR
+    W1["<b>Week 1: Drafts Only</b><br/>Nothing leaves building<br/>Human audits 100%"]
+    W2["<b>Week 2: Action Gate</b><br/>Approve actions only<br/>Stop reading the process"]
+    W3["<b>Week 3: Routine Autonomous</b><br/>Acts on routine tasks<br/>Escalates exceptions only"]
+    W4["<b>Week 4: Fully Scheduled</b><br/>Runs in background<br/>Human reads weekly summary"]
+
+    W1 -->|Calibrate| W2
+    W2 -->|Verify| W3
+    W3 -->|Compound Context| W4
+```
+
 ## The standing rule, from week 1
 
 ```markdown

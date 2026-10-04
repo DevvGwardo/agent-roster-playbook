@@ -17,6 +17,23 @@ Danny ran the same play: he had a bot audit his subscriptions for forgotten recu
 
 Better to learn that on a newsletter than on an invoice.
 
+```mermaid
+quadrantChart
+    title Risk vs Calibration Value
+    x-axis Low Learning Value --> High Learning Value
+    y-axis Low Blast Radius --> High Blast Radius
+    quadrant-1 Dangerous Trial
+    quadrant-2 Low ROI Noise
+    quadrant-3 Disposable
+    quadrant-4 Optimal Calibration Zone
+    "Production Invoices": [0.4, 0.9]
+    "Outbound Sales Emails": [0.35, 0.85]
+    "Core Code Deploy": [0.3, 0.95]
+    "Grocery Carts Comparison": [0.85, 0.2]
+    "DoorDash Slack Listener": [0.75, 0.15]
+    "Subscription & Newsletter Audit": [0.88, 0.25]
+```
+
 ## The template
 
 ```markdown

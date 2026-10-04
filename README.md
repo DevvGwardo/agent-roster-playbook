@@ -10,6 +10,71 @@ Not prompt tricks. Setup you do once: narrow bots with editable profile files, e
 
 > **Source & credit:** This playbook is a restructured, condensed reference version of an article by **Carnage ([@0xCarnagee](https://x.com/0xCarnagee))**, "The Grok Bot Team's Own Workflow: 11 steps to the roster they actually run" (X article, Aug 19, 2026). All quotes and practices come from that piece and document real usage by the SpaceXAI and Cursor teams (Matt Palmer, Emma, Bennett, Fiona, Vincent, Danny Limanseta, Roman). This repo only reorganizes the material for reference; the original is worth reading in full.
 
+## System Architecture & Workflow
+
+<p align="center">
+  <img src="assets/architecture-diagram.jpg" alt="The Agent Roster Architecture Diagram" />
+</p>
+
+```mermaid
+flowchart TD
+    subgraph S1["1. Narrow Roster"]
+        R1["Sales Bot (CRM, Follow-ups)"]
+        R2["Ops Bot (Invoices, Onboarding)"]
+        R3["Eng Bot (Repro & Tickets)"]
+        R4["Demo Bot (Prototype Pipeline)"]
+        R5["Watcher Bots (Fast/Slow Channels)"]
+    end
+
+    subgraph S2["2. Three-Layer Memory"]
+        M1["User Profile (Shared prefs & timezone)"]
+        M2["Agent Profile (Narrow scope & rules)"]
+        M3["Project Profile (Work conventions)"]
+        M4["WHAT I LEARNED (Autonomous self-append)"]
+        M1 --> M2 --> M3 --> M4
+    end
+
+    subgraph S3["3. Execution & Watcher Lanes"]
+        L1["Fast Lane: Hourly narrow signal scan"]
+        L2["Slow Lane: Daily grouped summary"]
+        L3{"Signal Found?"}
+        L4["'Say nothing today' -> Stop"]
+        L5["Draft artifact via MCP"]
+        L1 --> L3
+        L2 --> L3
+        L3 -- None --> L4
+        L3 -- Found --> L5
+    end
+
+    subgraph S4["4. Skill Chaining & Handoffs"]
+        C1["Raw Source / Bookmark"]
+        C2["Writing Skill"]
+        C3{"Human Gate: Type 'yes'"}
+        C4["Planning Skill"]
+        C5["Build Agent / Prototype"]
+        C6["Bot-to-Bot Handoff (@repro -> @debug)"]
+        C1 --> C2 --> C3
+        C3 -- Approved --> C4 --> C5
+        C5 -.-> C6
+    end
+
+    subgraph S5["5. Contract Rules & Governance"]
+        G1{"Can undo in < 1 min?"}
+        G2["Act Alone (Draft, research, log)"]
+        G3["Park For Me (Spend $, publish, email)"]
+        G1 -- Yes --> G2
+        G1 -- No --> G3
+    end
+
+    S1 --> S2 --> S3 --> S4 --> S5
+```
+
+## The 11-Step Pipeline
+
+<p align="center">
+  <img src="assets/workflow-pipeline.jpg" alt="The 11-Step Agent Roster Pipeline" />
+</p>
+
 ## The 11 steps
 
 1. **Steal the roster before you invent one.** Copy a narrow-bot org chart that already works: Sales, Ops, Engineering, Demo, Content, Product, Grocery, DoorDash. Pick two roles that map onto your week. Details: [docs/01-the-roster.md](docs/01-the-roster.md)

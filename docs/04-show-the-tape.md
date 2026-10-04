@@ -15,6 +15,21 @@ Return the finished work, then the receipts:
 - anything guessed at, listed separately
 - anything skipped, and why
 
+```mermaid
+flowchart LR
+    A["Bot Execution"] --> B["Deliverable Output"]
+    A --> C["'Show The Tape' Verification"]
+
+    subgraph Receipts["The 4-Part Evidence Receipt"]
+        C --> R1["🎥 Video / Screen Recording"]
+        C --> R2["🔗 Inline Primary Citations"]
+        C --> R3["⚠️ Explicit Guesses List"]
+        C --> R4["⏭️ Skipped Items & Rationale"]
+    end
+
+    Receipts --> D["Zero-Audit Human Trust"]
+```
+
 ## The rule that kills hallucinated reports
 
 > If you cannot show me how you got a number, leave the number out.

@@ -11,6 +11,21 @@ Most people build bots that respond. The team builds bots that notice.
 
 Fast lane for things that decay in an hour, slow lane for things that decay in a week.
 
+```mermaid
+flowchart TD
+    subgraph Fast["⚡ Fast Lane (Content Bot - Hourly)"]
+        F1["Scan Slack eng & product channels"] --> F2{"Small ship or fix found?"}
+        F2 -- Yes --> F3["Draft social post"] --> F4["Push to Typefully via MCP"]
+        F2 -- No --> F5["Silence / No output<br/><i>(Valid Result)</i>"]
+    end
+
+    subgraph Slow["⏳ Slow Lane (Product Bot - Daily)"]
+        S1["Read announcement channels at set time"] --> S2{"Announcements exist?"}
+        S2 -- Yes --> S3["Group themes & link primary sources"] --> S4["Publish grouped update"]
+        S2 -- No --> S5["Post 'Nothing today' & STOP<br/><i>(Never manufacture news)</i>"]
+    end
+```
+
 No workflow builder, no node canvas: he asks the bot to set up its own trigger and adjusts it if it misfires. Triggers fire on a schedule, a Slack message, or a git event. One bot can own up to 50 routines; the app keeps the 20 most recent run records per routine.
 
 ## The failure mode is greed

@@ -12,6 +12,22 @@ You are not prompting. You are editing a document that survives every conversati
 | Agent | That bot's own profile plus its interaction history | You (the layer you spend the real half hour on, once) |
 | Project | Decisions and conventions that belong to the work, not one teammate | Accumulates from the work |
 
+```mermaid
+flowchart TD
+    subgraph Memory["Agent Memory Architecture on Disk"]
+        UL["<b>User Layer</b><br/>Name, timezone, global habits<br/><i>(Shared across all bots)</i>"]
+        AL["<b>Agent Layer (Profile File)</b><br/>Narrow scope, boundaries, what good looks like<br/><i>(Written by you once, edited forever)</i>"]
+        PL["<b>Project Layer</b><br/>Work conventions, repo decisions, architecture<br/><i>(Accumulates across tasks)</i>"]
+        WIL["<b>WHAT I LEARNED Block</b><br/>Autonomous post-task reflections & rules<br/><i>(Appended autonomously by the bot)</i>"]
+    end
+
+    UL --> AL
+    AL --> PL
+    PL --> Execution["Bot Execution / Run"]
+    Execution -->|"Appends insights"| WIL
+    WIL -.->|"Compounding context"| AL
+```
+
 The docs put it in a sentence: "Focused Bots build more useful context than one catch-all Bot." Narrow scope is what lets the file get sharp.
 
 ## The agent file, annotated

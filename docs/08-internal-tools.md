@@ -24,6 +24,28 @@ You authenticate, hand the screen back, it resumes in the same session. That ses
 
 For API keys it sends a secure form, so the value never lands in the transcript. You never paste a password into a chat. **The bot gets a session, not a secret.**
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Human as Human Operator
+    participant Bot as Autonomous Bot
+    participant Browser as Headless Cloud Browser
+    participant Tool as Ugly Internal Tool (No API)
+
+    Bot->>Browser: Navigate to internal tool UI
+    Browser->>Tool: Request dashboard
+    Tool-->>Browser: Redirect to SSO / 2FA Wall
+    Browser-->>Bot: Intercepts auth boundary
+    Note over Bot,Human: Handshake: Bot Hands Screen to Human
+    Bot->>Human: "Hit 2FA / Login Wall. Please clear screen."
+    Human->>Browser: Performs 2FA / hardware key login
+    Human->>Bot: Hands control back
+    Note over Bot,Tool: Bot Has Valid Session, Never Saw Password
+    Bot->>Browser: Resume automated workflow
+    Browser->>Tool: Execute repetitive clicks & asset exports
+    Tool-->>Bot: 74 Finished assets delivered
+```
+
 ## The onboarding template
 
 ```markdown

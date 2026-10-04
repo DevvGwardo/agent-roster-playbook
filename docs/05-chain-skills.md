@@ -10,6 +10,26 @@ The part worth stealing outright. Everyone else is tuning prompts. Palmer's Demo
 
 Count the parts: a source, a skill that writes, a human gate, a second skill that plans, a third system that builds. One working prototype a day, and his entire input is typing "yes".
 
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Human as Human Operator
+    participant Source as X Bookmarks / Source
+    participant Demo as Demo Bot
+    participant WriteSkill as Writing Skill
+    participant PlanSkill as Planning Skill
+    participant CloudAgent as Cursor Cloud Agent
+
+    Demo->>Source: 1. Scan bookmarks for new tech/package
+    Demo->>WriteSkill: 2. Invoke writing skill to draft prompt spec
+    WriteSkill-->>Demo: Return structured proposal
+    Demo->>Human: 3. "Found X. Ready to build with spec Y?"
+    Human->>Demo: 4. Types "yes" (Only human input)
+    Demo->>PlanSkill: 5. Invoke planning skill to break down tasks
+    PlanSkill->>CloudAgent: 6. Spawn Cursor Cloud Agent in tech-demos repo
+    CloudAgent-->>Human: 7. Port bound, working prototype ready in 15 mins
+```
+
 He wrote no prompt. He assembled a pipeline out of parts he already owned.
 
 ## Where skills come from

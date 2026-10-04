@@ -32,4 +32,27 @@ Fiona from community, on why onboarding felt easy:
 
 Pick two roles from these lists that map onto your week. You are not designing an org chart; you are copying one that already works.
 
+```mermaid
+graph TD
+    subgraph Bad["❌ Anti-Pattern: The Catch-All Bot"]
+        A["Vague 'Assistant'<br/>(Single chat, fuzzy context, fragile)"]
+        A -.->|"Tries everything"| Task1["Invoices"]
+        A -.->|"Tries everything"| Task2["Bug Repro"]
+        A -.->|"Tries everything"| Task3["Prototypes"]
+    end
+
+    subgraph Good["✅ The Narrow Roster Model"]
+        subgraph Core["Work Bots"]
+            S["Sales Bot<br/>(CRM & Follow-ups)"]
+            O["Ops Bot<br/>(Invoices & Onboarding)"]
+            E["Eng Bot<br/>(Repro & Tickets)"]
+        end
+        subgraph Exploration["Exploration & Personal"]
+            D["Demo Bot<br/>(Prototypes)"]
+            W["Watcher Bots<br/>(Slack & Social)"]
+            G["Grocery / Errands<br/>(Trust calibration)"]
+        end
+    end
+```
+
 The principle the docs put in one sentence: **"Focused Bots build more useful context than one catch-all Bot."** Narrow scope is what lets each bot's profile file get sharp.
